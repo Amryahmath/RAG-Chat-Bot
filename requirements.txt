@@ -7,4 +7,5 @@ pypdf>=4.0.0
 PyPDF2>=3.0.0
 pdfplumber
 python-multipart
+langchain-community
 tqdm
