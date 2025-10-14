@@ -1,7 +1,6 @@
 import os
 import streamlit as st
 import PyPDF2
-
 from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
