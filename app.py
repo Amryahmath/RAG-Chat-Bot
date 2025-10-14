@@ -1,12 +1,12 @@
 import os
 import streamlit as st
 import PyPDF2
-from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQA
 from langchain.schema import Document
 from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
+ 
 
 # ------------------- Streamlit Setup -------------------
 st.set_page_config(page_title="RAG Chatbot - Gemini 2.5 Flash", layout="wide")
