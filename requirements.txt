@@ -4,6 +4,7 @@ langchain-core>=0.3.0
 langchain-google-genai>=0.0.9
 chromadb>=0.5.0
 pypdf>=4.0.0
+PyPDF2>=3.0.0
 pdfplumber
 python-multipart
 tqdm
