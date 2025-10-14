@@ -9,3 +9,4 @@ pdfplumber
 python-multipart
 langchain-community
 tqdm
+python-dotenv

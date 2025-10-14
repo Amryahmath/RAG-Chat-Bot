@@ -1,6 +1,9 @@
 import os
+from pathlib import Path
+
 import streamlit as st
 import PyPDF2
+from dotenv import load_dotenv
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQA
@@ -20,9 +23,28 @@ The bot will use Google Gemini 2.5 Flash embeddings and chat to answer your quer
 )
 
 # ------------------- Google API Key -------------------
-GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
+def load_google_api_key():
+    # 1) Check Streamlit secrets (deployed on Streamlit Cloud)
+    if hasattr(st, 'secrets') and st.secrets.get('GOOGLE_API_KEY'):
+        return st.secrets.get('GOOGLE_API_KEY')
+
+    # 2) Check environment variables
+    if os.environ.get('GOOGLE_API_KEY'):
+        return os.environ.get('GOOGLE_API_KEY')
+
+    # 3) Fallback to a local .env file during development (not committed)
+    env_path = Path('.') / '.env'
+    if env_path.exists():
+        load_dotenv(env_path)
+        if os.environ.get('GOOGLE_API_KEY'):
+            return os.environ.get('GOOGLE_API_KEY')
+
+    return None
+
+
+GOOGLE_API_KEY = load_google_api_key()
 if not GOOGLE_API_KEY:
-    st.warning("⚠️ Google API key not found. Set it as an environment variable `GOOGLE_API_KEY`.")
+    st.warning("⚠️ Google API key not found. Provide it via Streamlit secrets, the environment variable `GOOGLE_API_KEY`, or a local `.env` file.")
     st.stop()
 os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
 
