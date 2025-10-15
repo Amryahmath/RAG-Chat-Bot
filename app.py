@@ -18,7 +18,7 @@ st.title("Smart Document Intelligence Assistant for GS Office Records")
 st.markdown(
     """
 Upload PDF files and ask questions about their content.  
-The bot will  and chat to answer your queries.
+The bot will extract, summarize and chat to answer your queries.
 """
 )
 
