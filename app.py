@@ -16,40 +16,17 @@ st.set_page_config(page_title="RAG Chatbot - Gemini 2.5 Flash", layout="wide")
 st.title("Smart Document Intelligence Assistant for GS Office Records")
 
 
-# ---- Custom UI Colors ----
+
+# ---- All Text Primary Color ----
 st.markdown(
-        """
-        <style>
-        :root {
-            --color-primary: #2c5530;
-            --color-primary-dark: #1a2e1f;
-            --color-primary-light: #3d7149;
-            --color-accent: #ffd700;
-            --color-accent-light: #ffed4e;
-        }
-        body, .stApp {
-            background-color: var(--color-primary-light) !important;
-        }
-        .stApp header, .stApp [data-testid="stSidebar"], .stApp [data-testid="stHeader"] {
-            background-color: var(--color-primary) !important;
-        }
-        .stApp [data-testid="stSidebar"] {
-            border-right: 2px solid var(--color-primary-dark);
-        }
-        .stApp .stButton>button, .stApp .stTextInput>div>input, .stApp .stFileUploader>div {
-            background-color: var(--color-accent) !important;
-            color: #222 !important;
-            border-radius: 6px;
-        }
-        .stApp .stButton>button:hover {
-            background-color: var(--color-accent-light) !important;
-        }
-        .stApp .stProgress>div>div {
-            background-color: var(--color-primary-dark) !important;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
+    """
+    <style>
+    body, .stApp, .stApp * {
+        color: #2c5530 !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
 )
 
 st.markdown(
@@ -130,7 +107,7 @@ def get_answer(query: str) -> str:
         return "Please upload a PDF document first."
 
 # ------------------- Streamlit UI -------------------
-uploaded_files = st.file_uploader("📂 Upload PDF files", type="pdf", accept_multiple_files=True)
+uploaded_files = st.file_uploader(" Upload PDF files", type="pdf", accept_multiple_files=True)
 
 if uploaded_files:
     all_docs = []
@@ -144,7 +121,7 @@ if uploaded_files:
     process_documents(all_docs)
     st.success(f"✅ Processed {len(all_docs)} PDF(s) into vector store!")
 
-query = st.text_input("💬 Ask a question about your PDFs:")
+query = st.text_input(" Ask a question about your PDFs:")
 if query:
     with st.spinner("🤖 Thinking..."):
         response = get_answer(query)
