@@ -13,12 +13,12 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGener
 
 # ------------------- Streamlit Setup -------------------
 st.set_page_config(page_title="RAG Chatbot - Gemini 2.5 Flash", layout="wide")
-st.title("📄 RAG Chatbot using Google Gemini 2.5 Flash")
+st.title("Smart Document Intelligence Assistant for GS Office Records")
 
 st.markdown(
     """
 Upload PDF files and ask questions about their content.  
-The bot will use Google Gemini 2.5 Flash embeddings and chat to answer your queries.
+The bot will  and chat to answer your queries.
 """
 )
 
