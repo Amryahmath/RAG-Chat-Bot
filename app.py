@@ -24,6 +24,18 @@ st.markdown(
     body, .stApp, .stApp * {
         color: #2c5530 !important;
     }
+    /* File uploader button: yellow background, white text */
+    .stApp .stFileUploader > div > button {
+        background-color: #ffd700 !important;
+        color: #fff !important;
+        border: 1.5px solid #ffd700 !important;
+        border-radius: 8px !important;
+        font-weight: 500;
+    }
+    .stApp .stFileUploader > div > button:hover {
+        background-color: #ffed4e !important;
+        color: #fff !important;
+    }
     </style>
     """,
     unsafe_allow_html=True
