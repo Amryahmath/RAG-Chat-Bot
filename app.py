@@ -15,8 +15,45 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGener
 st.set_page_config(page_title="RAG Chatbot - Gemini 2.5 Flash", layout="wide")
 st.title("Smart Document Intelligence Assistant for GS Office Records")
 
+
+# ---- Custom UI Colors ----
 st.markdown(
-    """
+        """
+        <style>
+        :root {
+            --color-primary: #2c5530;
+            --color-primary-dark: #1a2e1f;
+            --color-primary-light: #3d7149;
+            --color-accent: #ffd700;
+            --color-accent-light: #ffed4e;
+        }
+        body, .stApp {
+            background-color: var(--color-primary-light) !important;
+        }
+        .stApp header, .stApp [data-testid="stSidebar"], .stApp [data-testid="stHeader"] {
+            background-color: var(--color-primary) !important;
+        }
+        .stApp [data-testid="stSidebar"] {
+            border-right: 2px solid var(--color-primary-dark);
+        }
+        .stApp .stButton>button, .stApp .stTextInput>div>input, .stApp .stFileUploader>div {
+            background-color: var(--color-accent) !important;
+            color: #222 !important;
+            border-radius: 6px;
+        }
+        .stApp .stButton>button:hover {
+            background-color: var(--color-accent-light) !important;
+        }
+        .stApp .stProgress>div>div {
+            background-color: var(--color-primary-dark) !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+)
+
+st.markdown(
+        """
 Upload PDF files and ask questions about their content.  
 The bot will extract, summarize and chat to answer your queries.
 """
