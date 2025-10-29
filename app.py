@@ -3,7 +3,14 @@ from pathlib import Path
 import streamlit as st
 import PyPDF2
 from dotenv import load_dotenv
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+try:
+    from langchain.text_splitter import RecursiveCharacterTextSplitter
+except ModuleNotFoundError:
+    # Friendly runtime error in Streamlit so the app doesn't crash with an opaque traceback.
+    st.error("Missing dependency: the module `langchain.text_splitter` is not available.\n" \
+             "Please add `langchain-text-splitters>=0.3.11` to `requirements.txt` and redeploy (or rebuild the environment).")
+    st.stop()
+
 from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQA
 from langchain.schema import Document
