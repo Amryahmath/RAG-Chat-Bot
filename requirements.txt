@@ -9,4 +9,5 @@ pdfplumber
 python-multipart
 langchain-community
 tqdm
+langchain-text-splitters>=0.3.11
 python-dotenv
